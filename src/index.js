@@ -1,53 +1,47 @@
 import React from 'react';
 import ReactDom from 'react-dom';   
 
-// function Greeting(){
-//     return <div>
-//              <h1>
-//                  Hello World, Welcome in the world of React
-//               </h1>
-//         </div>;
-//     return  
- 
- //}
-
-// const Greeting = ()=> {
-//     return React.createElement('div',{},React.createElement('h1',{},"Hellooo"));
-// }
 
 import "./index.css"
+
+const books =[ 
+    {
+    img: 'https://images-na.ssl-images-amazon.com/images/I/81mpSoJzv4L._AC_UL300_SR300,200_.jpg',
+    title: 'I love you to the Moon and Back',
+    author:'Amelia Hepworth'
+
+    },
+    {
+    img: 'https://images-na.ssl-images-amazon.com/images/I/81LZXcfKqJL._AC_UL300_SR300,200_.jpg',
+    title: 'Llama Llama I Love You',
+    author:'Anna Dewdney'
+
+   }
+];
+
+const names = ['john','peter','susan'];
+const newNames = names.map((names)=>{
+    return <h1>{names}</h1>
+})
+
 function BookList() {
     return (
-       <section className='booklist'>
-        <Book/>
-        <Book/>
-        <Book/>
-        <Book/>
-        <Book/>
-        <Book/>
-        <Book/>
-        <Book/>
-        <Book/>
-        <Book/>
-        <Book/>
-        
+       <section className='booklist'>{newNames}
         </section>
     );  
 }
 
-const Book = () => {
+
+const Book = (props) => {
+  const {img, title, author} = props;
     return (
         <article className='book'>
-            <Image></Image>
-            <Title />
-            <Author />
+            <img src={img} alt="" />
+            <h1>{title}</h1>
+            <h4>{author}</h4>  
         </article>
-   
     )
 };
 
-const Image = ()=> <img src="https://images-na.ssl-images-amazon.com/images/I/81mpSoJzv4L._AC_UL300_SR300,200_.jpg" alt="" />;
-const Title = ()=> <h1>I love you to the Moon and Back</h1>;
-const Author = ()=> <h4>Amelia Hepworth</h4>;
 ReactDom.render(<BookList/>, document.getElementById('root'));
 
